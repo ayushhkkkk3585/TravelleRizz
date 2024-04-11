@@ -9,6 +9,7 @@ import Maincontent from './components/Maincontent'
 import Main from './components/Main';
 import Anicursor from './components/Anicursor';
 import Form from './components/Form';
+import FlightClass from './components/FlightClass';
 
 
 
@@ -30,9 +31,8 @@ function App() {
       </div> */}
       {/* <Navbar />
        <Main /> */}
-      <Form/>
-      
-
+      {/* <Form/> */}
+      <FlightClass/>
 
 
 

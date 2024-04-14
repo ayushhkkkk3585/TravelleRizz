@@ -10,34 +10,24 @@ import Main from './components/Main';
 import Anicursor from './components/Anicursor';
 import Form from './components/Form';
 import FlightClass from './components/FlightClass';
+import Tickets from './components/Tickets';
+
+
 
 
 
 function App() {
   const [count, setCount] = useState(0)
+  // const db =getFirestore();
 
   return (
     <>
     <Anicursor/>
-      {/* <Maincontent /> */}
-
-      {/* <div className='p-4'>
-        <SignedOut>
-          <SignInButton />
-        </SignedOut>
-        <SignedIn  >
-          <UserButton />
-        </SignedIn>
-      </div> */}
-      {/* <Navbar />
-       <Main /> */}
+      {/* <Navbar /> */}
+       <Main />
       {/* <Form/> */}
-      <FlightClass/>
-
-
-
-
-
+      {/* <FlightClass/> */}
+      {/* <Tickets/> */}
     </>
   )
 }

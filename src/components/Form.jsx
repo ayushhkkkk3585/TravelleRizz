@@ -1,33 +1,90 @@
-import React from 'react'
-import Navbar from './Navbar'
+import React from 'react';
+import Navbar from './Navbar';
+import Anicursor from './Anicursor';
+import './firebase';
+import { getFirestore, addDoc, collection } from "firebase/firestore";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { serverTimestamp } from "firebase/firestore";
 
 const Form = () => {
+   
+    const handleChange = async (e) => {
+        e.preventDefault();
+
+        const from = e.target.from.value;
+        const to = e.target.to.value;
+        const date = e.target.date.value;
+        
+        const data = {
+            Source: from,
+            Destination: to,
+            Date: date,
+            timestamp: serverTimestamp() // Add timestamp here
+        };
+
+        const db = getFirestore();
+        await addDoc(collection(db, 'destinations'), data);
+        console.log('Your Data has been stored:', data);
+    }
+
+    const notify = () => {
+        toast('Details saved successfully!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+    }
+
     return (
         <>
-
+            <Anicursor/>
             <Navbar />
+            <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="dark"
+                    />
             <div className='bg-black my-0 h-1 flex justify-center items-center w-4/5 mx-auto'></div>
             <p className='text-center font-bold text-3xl my-5'>Start Packing your bagss...</p>
-            {/* <div className='bg-img bg-no-repeat  h-96'> */}
+            
 
-            <div class="flex justify-center drop-shadow-lg">
-                <div class="bg-amber-400 p-14 my-10 rounded-lg flex">
-                    <div class="flex flex-col mr-4">
+            <div className="flex justify-center drop-shadow-lg">
+                <div className="bg-amber-400 p-14 my-10 rounded-lg flex">
+                    <form onSubmit={handleChange} className='flex' >
+                    <div className="flex flex-col mr-4">
                         <label className='font-bold text-lg '>From</label>
                         <input className='rounded-md h-7 border-black border-2' placeholder='Enter your Source' type="text" id="from" />
                     </div>
                     <div>
                         <img src="/src/assets/plane.png" className='w-24 mr-5' alt="" />
                     </div>
-                    <div class="flex flex-col mr-4">
+                    <div className="flex flex-col mr-4">
                         <label className='font-bold text-lg '>To</label>
                         <input className='rounded-md h-7 border-black border-2 ' placeholder='Enter your Destination' type="text" id="to" />
                     </div>
 
-                    <div class="flex flex-col">
+                    <div className="flex flex-col">
                         <label className='font-bold text-lg '>Date</label>
                         <input className='rounded-md h-7 border-black border-2' type="date" placeholder='Enter Date' id="date" />
                     </div>
+
+                    <button onClick={notify} type='submit' className='bg-teal-700 my-5 ml-5 rounded-md text-white font-bold p-2 '>Submit</button>
+                    
+                    </form>
+
                 </div>
             </div>
             <div className='flex justify-center items-center'>
@@ -57,7 +114,7 @@ const Form = () => {
             <div className='font-bold text-xl my-5 text-center underline'>Contributors: Parshad, Divya, Ayush</div>
 
 
-            {/* </div> */}
+            
         </>
     )
 }

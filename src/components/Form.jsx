@@ -6,6 +6,7 @@ import { getFirestore, addDoc, collection } from "firebase/firestore";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { serverTimestamp } from "firebase/firestore";
+import { Link } from 'react-router-dom';
 
 const Form = () => {
    
@@ -88,7 +89,7 @@ const Form = () => {
                 </div>
             </div>
             <div className='flex justify-center items-center'>
-                <button className='bg-teal-700 my-3 rounded-md text-white font-bold p-2 '>Select Flight Class</button>
+                <button className='bg-teal-700 my-3 rounded-md text-white font-bold p-2 '><Link to="/flightClass">Select Flight Class</Link></button>
             </div>
             <div className='bg-black my-0 h-1 flex justify-center items-center w-4/5 mx-auto'></div>
             <div className='flex gap-7 justify-between my-5' >

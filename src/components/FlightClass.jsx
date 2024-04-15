@@ -3,8 +3,13 @@ import Navbar from './Navbar';
 import './firebase';
 import { getFirestore, addDoc, collection } from "firebase/firestore";
 import { serverTimestamp } from "firebase/firestore";
+import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Anicursor from './Anicursor';
 
 const FlightClass = () => {
+    
     const handleChange = async (e) => {
         e.preventDefault();
         const selectedAirlines = e.target.dropdowns.value;
@@ -34,8 +39,22 @@ const FlightClass = () => {
     const handleSelectClass = (e) => {
         setSelectedClass(e.target.value);
     };
+    const notify = () => {
+        toast('Details saved successfully!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+    }
     return (
-        <>
+        <>  
+            <Anicursor/>
+            <ToastContainer/>
             <Navbar />
             <div className='bg-black my-0 h-1 flex justify-center items-center w-4/5 mx-auto'></div>
             <div>
@@ -63,7 +82,8 @@ const FlightClass = () => {
                             <p className='bg-white rounded-md p-1 font-semibold text-lg '>Selected Class : {selectedClass}</p>
                             <label className=' font-bold text-lg'> Enter Seat No.</label>
                             <input type="text" className='rounded-md border-black border-2 p-1' name="seatNo" placeholder='Enter seat no. from D1-D10' />
-                            <button className='bg-teal-700 my-3 rounded-md text-white font-bold p-2 '>Submit</button>
+                            <button onClick={notify} className='bg-teal-700 my-3 rounded-md text-white font-bold p-2 '>Submit</button>
+                            <button className='bg-teal-700 my-3 rounded-md text-white font-bold p-3'><Link to="/tickets"> Proceed for the ticket</Link></button>
                             
 
                         </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import { getFirestore, getDocs, collection, query, orderBy, limit } from "firebase/firestore";
+import Anicursor from './Anicursor';
 
 const Tickets = () => {
   const db = getFirestore();
@@ -45,6 +46,7 @@ const Tickets = () => {
 
   return (
     <>
+       <Anicursor/> 
       <Navbar />
       <div className='bg-black my-0 h-1 flex justify-center items-center w-4/5 mx-auto'></div>
       {ticket.map((tick) => (
@@ -57,22 +59,22 @@ const Tickets = () => {
               </div>
 
               <div className='flex flex-row justify-between'>
-                <div className='flex flex-col mx-12'>
+                <div className='flex flex-col mx-10'>
                   <p className='list-none font-semibold text-sm text-slate-600'>{tick.Date}</p>
                   <p className='list-none font-bold text-2xl'>Ayush Khalate</p>
                 </div>
-                <div className='flex flex-col mx-16'>
+                <div className='flex flex-col mx-12'>
                   <p className='list-none font-semibold text-sm text-slate-600'>Boarding time</p>
                   <p className='list-none font-bold text-2xl'>11:35AM</p>
                 </div>
               </div>
 
               <div className='flex flex-row justify-between'>
-                <div className='flex flex-col mx-12'>
+                <div className='flex flex-col mx-10'>
                   <p className='list-none font-semibold text-sm text-slate-600'>From</p>
                   <p className='list-none font-bold text-2xl'>{tick.Source}</p>
                 </div>
-                <div className='flex flex-col mx-28'>
+                <div className='flex flex-col mr-20'>
                   <p className='list-none font-semibold text-sm text-slate-600'>To</p>
                   <p className='list-none font-bold text-2xl'>{tick.Destination}</p>
                 </div>

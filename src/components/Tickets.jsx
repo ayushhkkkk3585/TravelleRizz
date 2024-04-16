@@ -61,7 +61,7 @@ const Tickets = () => {
               <div className='flex flex-row justify-between'>
                 <div className='flex flex-col mx-10'>
                   <p className='list-none font-semibold text-sm text-slate-600'>{tick.Date}</p>
-                  <p className='list-none font-bold text-2xl'>Ayush Khalate</p>
+                  <p className='list-none font-bold text-2xl'>Vivaan</p>
                 </div>
                 <div className='flex flex-col mx-12'>
                   <p className='list-none font-semibold text-sm text-slate-600'>Boarding time</p>
@@ -93,7 +93,7 @@ const Tickets = () => {
             {flights.map((fly) => (
               <div key={fly.id} className='bg-blue-900 text-white flex flex-col list-none pt-16 pb-16 w-5/5 p-6 rounded-r-lg'>
                 <p className='font-bold text-2xl'>{fly.selectedClass}</p>
-                <p className='font-bold text-2xl'>Ayush</p>
+                <p className='font-bold text-2xl'>Vivaan</p>
                 {ticket.map((tick) => (
                   <div key={tick.id} className='gap-3'>
                     <p className='font-semibold text-sm'>From</p>

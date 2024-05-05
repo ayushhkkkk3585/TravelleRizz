@@ -114,7 +114,7 @@ const FlightClass = () => {
 
                 </div>
             </div>
-            <div className='font-bold text-xl my-5 text-center underline'>Contributors: Parshad, Divya, Ayush</div>
+            <div className='font-bold text-xl my-5 text-center underline'>Made with Love for YOU ✈️ </div>
 
 
 
